@@ -59,7 +59,7 @@ app.controller('todoCtrl', ($scope, toastr, api, extras) => {
         return false
       }
 
-      if (!validate) changedTask.done = !!changedTask.done || 0
+      if (!validate) changedTask.done = !!changedTask.done || false
 
       api.updateTask(changedTask)
       .then((response) => response.data)

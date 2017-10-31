@@ -50,5 +50,3 @@ POST  api/v1/task/
 DELETE  api/v1/task/:id
 ```
 * Frontend is an AngularJs app that interacts with the above mentioned endpoints
-
->>>>>>> afc70cd999e3936e9daaf42ce36da30fd102d789

@@ -40,7 +40,7 @@ Run the project using the command below then go to http://localhost:8080/
 
 ### extras
 
-I have built this app into 2 components with an idea of making sure the code can be reused more than one application while making sure of scalability.
+I have built this app into 2 components with an idea of making sure the code can be reused by more than one application while making sure of scalability.
 I have to sides to this project as it is at the moment(Backend and Frontend)
 
 * Backend is a RESTFUL api with the following exposed endpoints:

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Price Check ToDo App</title>
+  <!--CDNs CSS-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!--CDNs JS-->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!--App main CSS-->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!--Libs CSS/JS-->
+  <link rel="stylesheet" href='js/angular-toastr/dist/angular-toastr.css'></link>
+  <script src="js/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <!--App main JS-->
+  <script src="js/app.js"></script>
+</head>
+<body ng-app="todoApp">
+  <div class="container" ng-controller="todoCtrl">
+    <div class="row">
+      <legend>Sandiso Toto - Coding Test for PriceCheck</legend>
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-list"></span> MY Pre - Price Check TODO LIST :)
+                    <div class="pull-right action-buttons">
+                      <button type="button" data-toggle="modal" data-target="#addModal" class="btn btn-default btn-xs">
+                          <span class="glyphicon glyphicon-plus" style="margin-right: 0px;"></span>
+                      </button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="(i, task) in todoList">
+                            <div class="checkbox">
+                                <input type="checkbox" id="checkbox{{i}}" ng-model="task.done" ng-click="updateTask(task)" ng-checked="task.done == 1 || task.done ==true"/>
+                                <label for="checkbox">
+                                    {{ task.description }}
+                                </label>
+                            </div>
+                            <div class="pull-right action-buttons">
+                                <a ng-if="task.done == 0 || task.done == false" href="#" data-toggle="modal" data-target="#editModal" ng-click="showEditModal(task)"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a ng-if="task.done == 1 || task.done ==true" href="#" ng-click="deleteTask(task)"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Total Tasks Left <span class="label label-info">{{taskCount}}</span></h6>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pull-right action-buttons">
+                              <button type="button" class="btn btn-default btn-md" ng-model="checkall" ng-click="markAll()">
+                                <span class="glyphicon glyphicon-check" style="margin-right: 0px;"></span>
+                                <span ng-if="!checkall"> Mark all as completed</span>
+                                <span ng-if="checkall"> Un-Mark all as completed</span>
+                              </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--Modals-->
+<div id="addModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Add Task</h4>
+      </div>
+      <div class="modal-body">
+        <form name="newTaskForm">
+           <input ng-model="newTask.description" type="text" class="form-control" name="description" placeholder="Description" required>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="up" class="btn btn-warning" data-dismiss="modal" ng-click="addTask(newTask)">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="editModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Edit Task</h4>
+      </div>
+      <div class="modal-body">
+        <form name="editTaskForm">
+          <input type="text" class="form-control" name="description" ng-model="taskToChange.description" placeholder="Description" required>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="up" class="btn btn-warning" data-dismiss="modal" ng-click="updateTask(taskToChange, true)">Update</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

@@ -41,8 +41,8 @@
                                 </label>
                             </div>
                             <div class="pull-right action-buttons">
-                                <a ng-if="task.done == 0 || task.done == false" href="#" data-toggle="modal" data-target="#editModal" ng-click="showEditModal(task)"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <a ng-if="task.done == 1 || task.done ==true" href="#" ng-click="deleteTask(task)"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a ng-if="task.done == false" href="#" data-toggle="modal" data-target="#editModal" ng-click="showEditModal(task)"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a ng-if="task.done == true" href="#" ng-click="deleteTask(task)"><span class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </li>
                     </ul>
@@ -54,10 +54,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="pull-right action-buttons">
-                              <button type="button" class="btn btn-default btn-md" ng-model="checkall" ng-click="markAll()">
+                              <button ng-if="!checkall && taskCount > 0" type="button" class="btn btn-default btn-md" ng-model="checkall" ng-click="markAll()">
                                 <span class="glyphicon glyphicon-check" style="margin-right: 0px;"></span>
-                                <span ng-if="!checkall"> Mark all as completed</span>
-                                <span ng-if="checkall"> Un-Mark all as completed</span>
+                                <span> Mark all as completed</span>
+                              </button>
+
+                              <button ng-if="taskCount == 0" type="button" class="btn btn-default btn-md" ng-model="checkall" ng-click="markAll()">
+                                <span class="glyphicon glyphicon-check" style="margin-right: 0px;"></span>
+                                <span> Un-Mark all as completed</span>
                               </button>
                             </div>
                         </div>

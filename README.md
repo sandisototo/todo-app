@@ -1,26 +1,54 @@
-# Slim Framework 3 Skeleton Application
+# todo-app
+## Restful ToDo app  written in PHP(Slim Framework) and AngularJs for a practical/coding test
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+#Installation instructions
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+Step 1:
 
-## Install the Application
+* Clone this repo into you local machine
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+Step 2:
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+* Create a database named `pc_todo`
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+* Find `pc_todo.sql` dump in the `db` folder and import it.
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
+Step 3:
+Install composer (more instructions can be found here:https://getcomposer.org/download/)
+```
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+```
 
-To run the application in development, you can also run this command. 
+Step 4:
+Install dependensies
+```
+php composer.phar install
+php composer.phar update
 
-	php composer.phar start
+```
 
-Run this command to run the test suite
+Step 5:
 
-	php composer.phar test
+Run the project using the command below then go to http://localhost:8080/
 
-That's it! Now go build something cool.
+```php composer.phar start```
+
+
+### extras
+
+I have built this app into 2 components with an idea of making sure the code can be reused more than one application while making sure of scalability.
+I have to sides to this project as it is at the moment(Backend and Frontend)
+
+* Backend is a RESTFUL api with the following exposed endpoints:
+```
+GET  api/v1/tasks/
+GET  api/v1/task/:id
+PUT  api/v1/task/:id
+POST  api/v1/task/
+DELETE  api/v1/task/:id
+```
+* Frontend is an AngularJs app that interacts with the above mentioned endpoints
+
+>>>>>>> afc70cd999e3936e9daaf42ce36da30fd102d789

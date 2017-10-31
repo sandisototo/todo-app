@@ -13,6 +13,8 @@ Step 2:
 
 * Find `pc_todo.sql` dump in the `db` folder and import it.
 
+* Configure your `db creds`
+
 Step 3:
 Install composer (more instructions can be found here:https://getcomposer.org/download/)
 ```

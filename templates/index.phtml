@@ -54,12 +54,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="pull-right action-buttons">
-                              <button ng-if="!checkall && taskCount > 0" type="button" class="btn btn-default btn-md" ng-model="checkall" ng-click="markAll()">
+                              <button ng-if="!checkall && taskCount > 0" type="button" class="btn btn-default btn-md" ng-model="checkall" ng-click="markAll(true)">
                                 <span class="glyphicon glyphicon-check" style="margin-right: 0px;"></span>
                                 <span> Mark all as completed</span>
                               </button>
 
-                              <button ng-if="taskCount == 0" type="button" class="btn btn-default btn-md" ng-model="checkall" ng-click="markAll()">
+                              <button ng-if="checkall || taskCount == 0" type="button" class="btn btn-default btn-md" ng-model="checkall" ng-click="markAll(false)">
                                 <span class="glyphicon glyphicon-check" style="margin-right: 0px;"></span>
                                 <span> Un-Mark all as completed</span>
                               </button>

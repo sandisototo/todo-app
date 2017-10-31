@@ -104,10 +104,10 @@ app.controller('todoCtrl', ($scope, toastr, api, extras) => {
 
     // Toggle markAll
     $scope.checkall = false;
-    $scope.markAll = () => {
-      $scope.checkall = !$scope.checkall;
+    $scope.markAll = (checkall) => {
+      $scope.checkall = checkall
       for(let key in $scope.todoList) {
-        $scope.todoList[key].done = $scope.checkall;
+        $scope.todoList[key].done = $scope.checkall
         $scope.updateTask($scope.todoList[key], false, true)
       }
 

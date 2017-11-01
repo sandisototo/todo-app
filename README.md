@@ -5,7 +5,7 @@
 
 Step 1:
 
-* Clone this repo into you local machine
+* Clone this repo into your local machine
 
 Step 2:
 

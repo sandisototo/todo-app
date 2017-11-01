@@ -15,6 +15,8 @@ Step 2:
 
 * Configure your `db creds`
 
+* `cd` into the application's root directory
+
 Step 3:
 Install composer (more instructions can be found here:https://getcomposer.org/download/)
 ```

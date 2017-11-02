@@ -20,6 +20,7 @@ app.controller('todoCtrl', ($scope, toastr, api, extras) => {
          extras.displayToast(toastr.error, "Error", $scope.errorMessage)
      })
     }
+
     // Load tasks
     $scope.getTasks()
 
@@ -87,7 +88,7 @@ app.controller('todoCtrl', ($scope, toastr, api, extras) => {
       .then((response) => response.data)
       .then((data) => {
         if (!data || data.error) {
-          extras.displayToast(toastr.error, "Error", data.message || "Could not update this task! Make sure you provide description.")
+          extras.displayToast(toastr.error, "Error", data.message || "Could not delete this task! Please try again.")
           return
         }
 
@@ -103,7 +104,7 @@ app.controller('todoCtrl', ($scope, toastr, api, extras) => {
     }
 
     // Toggle markAll
-    $scope.checkall = false;
+    $scope.checkall = false
     $scope.markAll = (checkall) => {
       $scope.checkall = checkall
       for(let key in $scope.todoList) {
